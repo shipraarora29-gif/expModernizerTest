@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-stats",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-06-01T17:29:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.medtronic.com/en-ca/index.html",
+    "originPage": "homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "stats",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "icon + stat number + label",
+    "buttonCount": 0,
+    "imageCount": 3
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "statistics display sections with icons and numbers",
+      "impact metrics with animated icons",
+      "key facts/figures sections with icon + number + description"
+    ],
+    "notSuitableFor": [
+      "product listing cards with large images",
+      "teaser cards with full descriptions",
+      "cards requiring CTA buttons"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en-ca/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-01T17:29:00.000Z"
+  }
+}

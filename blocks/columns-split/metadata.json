@@ -1,0 +1,39 @@
+{
+  "variantName": "columns-split",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-06-01T17:29:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.medtronic.com/en-ca/index.html",
+    "originPage": "homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "split-content",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "text column + media column",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "split layout sections with text on one side and image/video on other",
+      "feature highlight sections with text + media",
+      "about/who-we-are sections with descriptive text alongside imagery"
+    ],
+    "notSuitableFor": [
+      "multi-column layouts with 3+ columns",
+      "equal-weight text-only columns",
+      "comparison layouts where both sides have similar structure"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en-ca/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-01T17:29:00.000Z"
+  }
+}

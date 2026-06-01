@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://www.medtronic.com/en-ca/index.html",
+  "path": "en-ca",
+  "timestamp": "2026-06-01T17:43:29.274Z",
+  "title": "Global Healthcare Technology Leader | Medtronic (CA)",
+  "template": "homepage",
+  "blocks": [
+    "hero-homepage",
+    "cards-teaser",
+    "cards-teaser",
+    "columns-split",
+    "columns-split",
+    "cards-stats"
+  ]
+}

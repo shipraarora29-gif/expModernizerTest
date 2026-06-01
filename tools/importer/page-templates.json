@@ -1,0 +1,154 @@
+{
+  "metadata": {
+    "projectType": "doc"
+  },
+  "templates": [
+    {
+      "name": "product-category-page",
+      "urls": [
+        "https://www.medtronic.com/en-ca/healthcare-professionals/products/access-instruments.html"
+      ],
+      "description": "Product category listing page for healthcare professionals showing available product lines within a category",
+      "blocks": [
+        {
+          "name": "hero-category",
+          "instances": [
+            ".hero-banner"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            ".productmodellist"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero Section",
+          "selector": ".hero-banner",
+          "style": null,
+          "blocks": [
+            "hero-category"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Product Listing Section",
+          "selector": ".container.responsivegrid.mdt-container",
+          "style": null,
+          "blocks": [
+            "cards-product"
+          ],
+          "defaultContent": [
+            ".controlledtitle h2.contentTitle"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.medtronic.com/en-ca/index.html"
+      ],
+      "description": "Medtronic Canada homepage with hero, featured content sections, and promotional cards",
+      "blocks": [
+        {
+          "name": "hero-homepage",
+          "instances": [
+            ".herobanner"
+          ]
+        },
+        {
+          "name": "cards-teaser",
+          "instances": [
+            ".cmp-teaser"
+          ]
+        },
+        {
+          "name": "columns-split",
+          "instances": [
+            "#container-da1dd1a5b3",
+            "#container-3d3f1fa609"
+          ]
+        },
+        {
+          "name": "cards-stats",
+          "instances": [
+            "#container-d0b51fad6e"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero Section",
+          "selector": ".hero-main-content",
+          "style": null,
+          "blocks": [
+            "hero-homepage"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Teasers Section",
+          "selector": "#container-f85633ca34",
+          "style": null,
+          "blocks": [
+            "cards-teaser"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3",
+          "name": "Who We Are Section",
+          "selector": "#container-da1dd1a5b3",
+          "style": "dark",
+          "blocks": [
+            "columns-split"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "Health Equity Section",
+          "selector": "#container-eb3e077ff0",
+          "style": "dark",
+          "blocks": [],
+          "defaultContent": [
+            "#text-0054474e68",
+            "#text-7be0c0b242"
+          ]
+        },
+        {
+          "id": "section-5",
+          "name": "Our Impact Section",
+          "selector": "#container-c5b1b5c864",
+          "style": "highlight",
+          "blocks": [
+            "cards-stats",
+            "cards-teaser"
+          ],
+          "defaultContent": [
+            "#text-8465c5165e",
+            "#text-9e775b359d",
+            "#text-85cc638863"
+          ]
+        },
+        {
+          "id": "section-6",
+          "name": "Careers Section",
+          "selector": "#container-3d3f1fa609",
+          "style": "dark",
+          "blocks": [
+            "columns-split"
+          ],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}

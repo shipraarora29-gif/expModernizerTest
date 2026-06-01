@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-product",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-06-01T17:06:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.medtronic.com/en-ca/healthcare-professionals/products/access-instruments.html",
+    "originPage": "product category listing page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "product",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + title + description + link",
+    "buttonCount": 0,
+    "imageCount": 12
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "product listing pages",
+      "product category grids",
+      "pages showing multiple products with images, titles, and descriptions"
+    ],
+    "notSuitableFor": [
+      "feature cards without images",
+      "testimonial cards",
+      "cards with CTA buttons instead of full-card links"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en-ca/healthcare-professionals/products/access-instruments"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-01T17:06:00.000Z"
+  }
+}

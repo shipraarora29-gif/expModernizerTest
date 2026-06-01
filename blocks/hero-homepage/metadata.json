@@ -1,0 +1,39 @@
+{
+  "variantName": "hero-homepage",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-06-01T17:29:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.medtronic.com/en-ca/index.html",
+    "originPage": "homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "homepage-hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "pretitle + heading + description + CTA",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "homepage hero banners",
+      "campaign landing pages with gradient backgrounds",
+      "pages requiring pretitle + heading + description + CTA over background image"
+    ],
+    "notSuitableFor": [
+      "simple category heroes with only eyebrow and heading",
+      "heroes without background images",
+      "minimal text-only hero sections"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en-ca/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-01T17:29:00.000Z"
+  }
+}

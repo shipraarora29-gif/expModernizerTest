@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.medtronic.com/en-ca/healthcare-professionals/products/access-instruments.html",
+  "path": "en-ca/healthcare-professionals/products/access-instruments",
+  "timestamp": "2026-06-01T17:15:39.599Z",
+  "title": "Surgical access Instruments | Medtronic (CA)",
+  "template": "product-category-page",
+  "blocks": [
+    "hero-category",
+    "cards-product"
+  ]
+}

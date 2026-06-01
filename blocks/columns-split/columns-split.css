@@ -1,0 +1,78 @@
+.columns-split > div {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.columns-split > div > div {
+  order: 1;
+}
+
+.columns-split > div > .columns-split-img-col {
+  order: 0;
+}
+
+.columns-split img {
+  width: 100%;
+}
+
+.columns-split video {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.columns-split > div > .columns-split-img-col img {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.columns-split > div > div:first-child p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+.columns-split > div > div:first-child p:first-child {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0 0 12px;
+  opacity: 0.8;
+}
+
+.columns-split > div > div:first-child h2 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 16px;
+}
+
+.columns-split .button-container a.button:any-link {
+  background-color: transparent;
+  border: 1px solid currentcolor;
+  color: inherit;
+  padding: 11px 32px;
+}
+
+.columns-split .button-container a.button:any-link:hover {
+  background-color: rgb(255 255 255 / 10%);
+}
+
+@media (width >= 900px) {
+  .columns-split > div {
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .columns-split > div > div {
+    flex: 1;
+    order: unset;
+  }
+
+  .columns-split > div > div:first-child h2 {
+    font-size: 36px;
+  }
+}
