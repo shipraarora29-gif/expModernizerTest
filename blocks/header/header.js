@@ -32,6 +32,24 @@ function closeAllPanels(nav) {
  * @param {HTMLLIElement} li source list item
  * @returns {HTMLLIElement} decorated flyout row
  */
+/**
+ * Return a <ul>'s child <li> rows, dropping a leading "Overview" row.
+ * The source marks the first "Overview" in every panel as a hidden mobile-only
+ * back link (back-item-nav, display:none); it duplicates the parent's landing
+ * page and must not render at any flyout level.
+ * @param {HTMLUListElement} ul
+ * @returns {HTMLLIElement[]}
+ */
+function flyoutRows(ul) {
+  const rows = [...ul.children].filter((c) => c.tagName === 'LI');
+  const first = rows[0];
+  const firstLink = first && first.querySelector(':scope > a');
+  if (firstLink && firstLink.textContent.trim().toLowerCase() === 'overview') {
+    rows.shift();
+  }
+  return rows;
+}
+
 function buildFlyoutRow(li) {
   const row = document.createElement('li');
   row.className = 'nav-flyout-row';
@@ -52,9 +70,7 @@ function buildFlyoutRow(li) {
     row.setAttribute('aria-expanded', 'false');
     const panel = document.createElement('ul');
     panel.className = 'nav-flyout';
-    [...childList.children]
-      .filter((c) => c.tagName === 'LI')
-      .forEach((childLi) => panel.append(buildFlyoutRow(childLi)));
+    flyoutRows(childList).forEach((childLi) => panel.append(buildFlyoutRow(childLi)));
     row.append(panel);
   }
   return row;
@@ -85,9 +101,7 @@ function buildNavItem(li) {
     item.setAttribute('aria-expanded', 'false');
     const panel = document.createElement('ul');
     panel.className = 'nav-panel nav-flyout';
-    [...childList.children]
-      .filter((c) => c.tagName === 'LI')
-      .forEach((childLi) => panel.append(buildFlyoutRow(childLi)));
+    flyoutRows(childList).forEach((childLi) => panel.append(buildFlyoutRow(childLi)));
     item.append(panel);
   }
   return item;
