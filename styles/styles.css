@@ -2,13 +2,13 @@
 
 :root {
   --background-color: #fff;
-  --light-color: #f5f5f7;
-  --dark-color: #1a1a2e;
+  --light-color: #f5f5f5;
+  --dark-color: #140f4b;
   --text-color: rgb(0 0 0 / 90%);
   --link-color: #170f5f;
   --link-hover-color: #1010eb;
-  --body-font-family: "Avenir Next", avenir, helvetica, arial, sans-serif;
-  --heading-font-family: "Avenir Next", avenir, helvetica, arial, sans-serif;
+  --body-font-family: "AvenirNextWorld", "avenir next", avenir, effra, helvetica, arial, sans-serif;
+  --heading-font-family: "AvenirNextWorld", "avenir next", avenir, effra, helvetica, arial, sans-serif;
   --body-font-size-m: 16px;
   --body-font-size-s: 14px;
   --body-font-size-xs: 12px;
@@ -230,4 +230,66 @@ main .section.dark a:any-link {
 
 main .section.highlight {
   background-color: var(--light-color);
+}
+
+/* "Our Impact" bento: gradient intro panel + stat cards + navy side card */
+main .section.highlight > .default-content-wrapper:first-child {
+  background: linear-gradient(120deg, #a10a6b 0%, #6a1bb0 60%, #7b2ff7 100%);
+  color: #fff;
+  border-radius: 8px;
+  padding: 48px 40px;
+  max-width: none;
+  margin: 0 0 24px;
+}
+
+main .section.highlight > .default-content-wrapper:first-child strong {
+  display: block;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+main .section.highlight > .default-content-wrapper:first-child a:any-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 11px 28px;
+  border: 1px solid #fff;
+  border-radius: 9999px;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* PATIENTS & CAREGIVERS navy card (wrapper that leads with that label) */
+main .section.highlight > .default-content-wrapper:nth-child(3) {
+  background: var(--brand-dark, #140f4b);
+  color: #fff;
+  border-radius: 8px;
+  padding: 40px;
+  max-width: none;
+  margin: 24px 0 0;
+}
+
+main .section.highlight > .default-content-wrapper:nth-child(3) strong {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 8px 0 12px;
+}
+
+main .section.highlight > .default-content-wrapper:nth-child(3) a:any-link {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 11px 28px;
+  border: 1px solid #fff;
+  border-radius: 9999px;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* hide leftover flattened-copy remnants (orphan links / broken GIF images) */
+main .section.highlight > .default-content-wrapper:nth-child(n+4) {
+  display: none;
 }

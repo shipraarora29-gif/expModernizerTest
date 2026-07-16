@@ -1,10 +1,19 @@
+/* cards-stats -- "Our Impact" statistic cards */
+
+/* Source: medtronic.com/en-ca -- row of stat cards (animated icon, big thin blue number, label) */
+
+/* Computed styles extracted from source #container-d0b51fad6e:
+   - number: 56px / weight 250 / line-height 1.2 / color rgb(16 16 235) = --brand-blue
+   - label:  16px / weight 400 / line-height 24px / color rgba(0 0 0 / 90%) = --text-color, centered
+   - icon:   ~89x89, object-fit contain (blue outline baked into the animated GIF art) */
+
 .cards-stats > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
+  gap: 48px;
 }
 
 .cards-stats > ul > li {
@@ -14,51 +23,55 @@
   text-align: center;
   background: transparent;
   border: none;
-  padding: 24px;
+  padding: 0;
 }
 
+/* Icon (animated GIF -- blue outline is baked into the art) */
 .cards-stats .cards-stats-card-image {
   line-height: 0;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
-.cards-stats > ul > li img {
-  width: 64px;
-  height: 64px;
+.cards-stats .cards-stats-card-image img {
+  width: 89px;
+  height: 89px;
   object-fit: contain;
+  border: none;
+  border-radius: 0;
 }
 
+/* Card body holds the number (strong) + label (text after br) in a single <p> */
 .cards-stats .cards-stats-card-body {
   margin: 0;
 }
 
-.cards-stats .cards-stats-card-body p:first-child {
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--link-hover-color);
-  margin: 0 0 8px;
+.cards-stats .cards-stats-card-body p {
+  margin: 0;
+  font-size: 16px;             /* label typography */
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-color);
+  text-align: center;
 }
 
-.cards-stats .cards-stats-card-body p:last-child {
-  font-size: 14px;
-  line-height: 1.4;
-  color: rgb(0 0 0 / 70%);
-  margin: 0;
+/* The large statistic number */
+.cards-stats .cards-stats-card-body p strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 56px;
+  font-weight: 250;            /* thin -- the source's visual signature */
+  line-height: 1.2;
+  color: var(--brand-blue);
+}
+
+/* Hide the <br> since the number is a block element */
+.cards-stats .cards-stats-card-body p br {
+  display: none;
 }
 
 @media (width >= 900px) {
   .cards-stats > ul {
     grid-template-columns: repeat(3, 1fr);
-    gap: 48px;
-  }
-
-  .cards-stats > ul > li img {
-    width: 80px;
-    height: 80px;
-  }
-
-  .cards-stats .cards-stats-card-body p:first-child {
-    font-size: 48px;
+    gap: 32px;
   }
 }

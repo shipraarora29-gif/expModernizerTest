@@ -1,13 +1,13 @@
 :root {
-  --heading-font-family: "Avenir Next", avenir, helvetica, arial, sans-serif;
-  --body-font-family: "Avenir Next", avenir, helvetica, arial, sans-serif;
+  --heading-font-family: "AvenirNextWorld", "avenir next", avenir, effra, helvetica, arial, sans-serif;
+  --body-font-family: "AvenirNextWorld", "avenir next", avenir, effra, helvetica, arial, sans-serif;
   --background-color: #fff;
   --text-color: rgb(0 0 0 / 90%);
   --link-color: #170f5f;
-  --link-hover-color: #0010eb;
+  --link-hover-color: #1010eb;
   --brand-blue: #1010eb;
   --brand-navy: #170f5f;
-  --brand-dark: #1a1a2e;
+  --brand-dark: #140f4b;
   --section-padding: 64px 0;
   --nav-height: 64px;
   --content-max-width: 1200px;
@@ -19,6 +19,10 @@
   --heading-size-xs: 14px;
   --body-font-size: 16px;
   --body-line-height: 1.5;
+  --eyebrow-color: rgb(0 0 0 / 77%);
+  --eyebrow-font-size: 12px;
+  --eyebrow-font-weight: 500;
+  --eyebrow-letter-spacing: 1.5px;
   --button-border-radius: 9999px;
   --button-padding: 16px 40px;
   --button-font-size: 16px;

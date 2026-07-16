@@ -21,8 +21,8 @@ function buildHeroBlock(main) {
   const picture = main.querySelector('picture');
   // eslint-disable-next-line no-bitwise
   if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
-    // Check if h1 or picture is already inside a hero block
-    if (h1.closest('.hero') || picture.closest('.hero')) {
+    // Check if h1 or picture is already inside a hero block or an authored hero variant
+    if (h1.closest('.hero, .hero-homepage') || picture.closest('.hero, .hero-homepage')) {
       return; // Don't create a duplicate hero block
     }
     const section = document.createElement('div');
@@ -114,6 +114,36 @@ function decorateButtons(main) {
 }
 
 /**
+ * Applies Section Metadata styles to their sections.
+ * The project's aem.js decorateSections does not process section-metadata blocks,
+ * so this reads each `.section-metadata` block, applies its `style` values as
+ * classes on the parent section, and removes the block.
+ * @param {Element} main The main element
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll('.section .section-metadata').forEach((meta) => {
+    const section = meta.closest('.section');
+    if (!section) return;
+    [...meta.children].forEach((row) => {
+      const cells = [...row.children];
+      if (cells.length < 2) return;
+      const key = cells[0].textContent.trim().toLowerCase();
+      const value = cells[1].textContent.trim();
+      if (key === 'style') {
+        value.split(',').forEach((s) => {
+          const cls = s.trim().toLowerCase().replace(/\s+/g, '-');
+          if (cls) section.classList.add(cls);
+        });
+      } else {
+        section.dataset[key] = value;
+      }
+    });
+    // remove the block wrapper too so nothing renders / tries to load as a block
+    (meta.closest('.section-metadata-wrapper') || meta).remove();
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -122,6 +152,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionMetadata(main);
   decorateBlocks(main);
   decorateButtons(main);
 }

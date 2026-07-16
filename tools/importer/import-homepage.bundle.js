@@ -213,8 +213,71 @@ var CustomImportScript = (() => {
       WebImporter.DOMUtils.remove(element, ["#onetrust-consent-sdk"]);
       WebImporter.DOMUtils.remove(element, [".skip-navigation", ".skip-main"]);
       WebImporter.DOMUtils.remove(element, [".warn-on-leave"]);
+      WebImporter.DOMUtils.remove(element, [
+        "form",
+        ".cmp-form",
+        ".mdt-form",
+        ".contact-us-form-container",
+        ".mdt-modal",
+        '[role="dialog"]',
+        '[id^="screen"]',
+        '[id*="contactusForm"]'
+      ]);
     }
     if (hookName === TransformHook.afterTransform) {
+      const template = payload && payload.template;
+      if (template && template.name === "homepage") {
+        element.querySelectorAll(".no-pad-mobile").forEach((wrapper) => {
+          if (wrapper.querySelector("table")) return;
+          wrapper.remove();
+        });
+        const norm = (s) => (s || "").replace(/\s+/g, " ").trim().toLowerCase();
+        let blockHaystack = "";
+        const blockAlts = /* @__PURE__ */ new Set();
+        const blockHrefs = /* @__PURE__ */ new Set();
+        element.querySelectorAll("table").forEach((table) => {
+          blockHaystack += ` ${norm(table.textContent)} `;
+          table.querySelectorAll("img").forEach((img) => {
+            const v = norm(img.getAttribute("alt"));
+            if (v) blockAlts.add(v);
+          });
+          table.querySelectorAll("a[href]").forEach((a) => {
+            blockHrefs.add(a.getAttribute("href"));
+          });
+        });
+        const looseSeen = /* @__PURE__ */ new Set();
+        element.querySelectorAll("p").forEach((p) => {
+          if (p.closest("table")) return;
+          const img = p.querySelector("img");
+          if (img) {
+            const alt = norm(img.getAttribute("alt"));
+            const altKey = `img:${alt}`;
+            if (blockAlts.has(alt) || looseSeen.has(altKey)) {
+              p.remove();
+              return;
+            }
+            looseSeen.add(altKey);
+            return;
+          }
+          const link = p.querySelector("a[href]");
+          if (link) {
+            const href = link.getAttribute("href");
+            const hrefKey = `href:${href}`;
+            if (blockHrefs.has(href) || looseSeen.has(hrefKey)) {
+              p.remove();
+              return;
+            }
+            looseSeen.add(hrefKey);
+          }
+          const t = norm(p.textContent);
+          if (!t) return;
+          if (blockHaystack.includes(t) || looseSeen.has(`txt:${t}`)) {
+            p.remove();
+          } else {
+            looseSeen.add(`txt:${t}`);
+          }
+        });
+      }
       WebImporter.DOMUtils.remove(element, [".com-header-container"]);
       WebImporter.DOMUtils.remove(element, [".mdt-header-breadcrumb"]);
       WebImporter.DOMUtils.remove(element, ["footer"]);

@@ -1,78 +1,203 @@
+/*
+ * columns-split
+ * Two-column split used in the Medtronic "Who We Are" and "Careers"
+ * sections. A text column (eyebrow label, short separator rule, large
+ * heading, body copy and an outlined pill button) sits beside a media
+ * column (image or looping video). The section reads white-on-dark, so
+ * the block supplies its own dark background and full-bleed layout even
+ * when the surrounding EDS section is not marked `.dark`.
+ */
+
+/* full-bleed: break out of the section's max-width content well */
+.columns-split-wrapper {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.columns-split {
+  box-sizing: border-box;
+  background-color: var(--brand-dark);
+  color: #fff;
+}
+
 .columns-split > div {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 0;
 }
 
+/* stacking order on mobile: text first, media below */
 .columns-split > div > div {
   order: 1;
 }
 
-.columns-split > div > .columns-split-img-col {
+/* stat pairs that follow the video in the "Who We Are" media column:
+   large light number above a small caption, arranged in a row */
+.columns-split-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px 32px;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.columns-split-stat {
+  flex: 1 1 120px;
+  text-align: center;
+  color: #fff;
+}
+
+.columns-split-stat p {
+  margin: 0;
+  color: #fff;
+}
+
+.columns-split-stat p:first-child,
+.columns-split-stat strong {
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.columns-split-stat p:last-child {
+  margin-top: 4px;
+  font-size: var(--body-font-size, 16px);
+  line-height: 1.5;
+}
+
+/* --- text column ---------------------------------------------------- */
+
+.columns-split > div > div:first-child {
   order: 0;
-}
-
-.columns-split img {
-  width: 100%;
-}
-
-.columns-split video {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.columns-split > div > .columns-split-img-col img {
-  display: block;
-  width: 100%;
-  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 48px 24px;
 }
 
 .columns-split > div > div:first-child p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin: 0 0 24px;
+  margin: 0 0 16px;
+  font-size: var(--body-font-size, 16px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
 }
 
-.columns-split > div > div:first-child p:first-child {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+/* eyebrow label (first paragraph, authored as <em>) */
+.columns-split > div > div:first-child > p:first-child {
   margin: 0 0 12px;
-  opacity: 0.8;
+  font-size: var(--eyebrow-font-size, 12px);
+  font-weight: 600;
+  line-height: 1.6;
+  text-transform: uppercase;
+  letter-spacing: 1.286px;
+}
+
+.columns-split > div > div:first-child > p:first-child em {
+  font-style: normal;
+}
+
+/* short separator rule below the eyebrow */
+.columns-split > div > div:first-child > p:first-child::after {
+  content: "";
+  display: block;
+  width: 195px;
+  max-width: 100%;
+  margin-top: 24px;
+  border-top: 1px solid rgb(255 255 255 / 60%);
 }
 
 .columns-split > div > div:first-child h2 {
-  font-size: 28px;
+  margin: 0 0 16px;
+  font-size: var(--heading-size-xxl, 44px);
   font-weight: 700;
   line-height: 1.2;
-  margin: 0 0 16px;
+  color: #fff;
 }
 
-.columns-split .button-container a.button:any-link {
-  background-color: transparent;
-  border: 1px solid currentcolor;
-  color: inherit;
+/* outlined pill button (transparent, white border) */
+.columns-split .button-container {
+  margin: 16px 0 0;
+}
+
+.columns-split a.button:any-link {
   padding: 11px 32px;
+  border: 1px solid #fff;
+  border-radius: var(--button-border-radius, 9999px);
+  background-color: transparent;
+  color: #fff;
+  font-size: var(--button-font-size, 16px);
+  font-weight: var(--button-font-weight, 500);
+  letter-spacing: 0.6px;
 }
 
-.columns-split .button-container a.button:any-link:hover {
+.columns-split a.button:any-link:hover {
+  border-color: #fff;
   background-color: rgb(255 255 255 / 10%);
+  color: #fff;
 }
+
+/* --- media column --------------------------------------------------- */
+
+.columns-split img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: cover;
+}
+
+.columns-split video {
+  display: block;
+  width: 100%;
+  border-radius: 0;
+  object-fit: cover;
+}
+
+.columns-split .columns-split-img-col {
+  align-self: stretch;
+}
+
+/* --- desktop -------------------------------------------------------- */
 
 @media (width >= 900px) {
   .columns-split > div {
     flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .columns-split > div > div:first-child {
+    flex: 0 1 40%;
+    order: 0;
+    align-self: center;
+    padding: 64px 48px 64px 64px;
+  }
+
+  .columns-split > div > div:last-child {
+    flex: 1 1 60%;
+    order: 1;
+    display: flex;
+    flex-flow: row wrap;
     align-items: center;
-    gap: 48px;
+    justify-content: center;
   }
 
-  .columns-split > div > div {
-    flex: 1;
-    order: unset;
+  /* video / image spans the full media column */
+  .columns-split > div > div:last-child > video,
+  .columns-split > div > div:last-child > .columns-split-img-col {
+    flex: 1 1 100%;
   }
 
-  .columns-split > div > div:first-child h2 {
-    font-size: 36px;
+  /* stats arranged in a single row beneath the media */
+  .columns-split-stats {
+    flex-wrap: nowrap;
+  }
+
+  .columns-split-stat {
+    flex: 1 1 0;
   }
 }

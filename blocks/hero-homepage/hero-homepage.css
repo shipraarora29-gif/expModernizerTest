@@ -1,97 +1,198 @@
+/* Block: hero-homepage -- design migrated from medtronic.com/en-ca .herobanner */
+
+/* Selectors below use :first-child (image row) and :last-child (text row),
+   which target disjoint elements, so descending-specificity is a false positive. */
+/* stylelint-disable no-descending-specificity */
+
+/* Full-bleed: escape the section's max-width container */
 .hero-homepage-container .hero-homepage-wrapper {
-  max-width: unset;
+  max-width: 100%;
   padding: 0;
 }
 
 .hero-homepage {
   position: relative;
-  min-height: 480px;
-  display: flex;
-  align-items: center;
+  display: block;
   overflow: hidden;
-  background: linear-gradient(135deg, #1a1a2e 0%, #170f5f 50%, #2d1b69 100%);
-}
-
-.hero-homepage picture {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.hero-homepage picture img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: right center;
-  opacity: 0.7;
-}
-
-.hero-homepage > div {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 60px 24px;
-  width: 100%;
-}
-
-.hero-homepage > div > div {
-  max-width: 500px;
   color: #fff;
 }
 
-.hero-homepage p {
-  font-size: 16px;
-  line-height: 1.5;
-  color: rgb(255 255 255 / 90%);
-  margin: 0 0 24px;
+/* --- Background image (composited gradient banner with baked-in photo) ---
+   Source asset is 2880x1400 (~2.057:1): a blue gradient with a rounded photo
+   inset on the right. It defines the block's aspect ratio / height. */
+.hero-homepage > div:first-child,
+.hero-homepage > div:first-child > div {
+  margin: 0;
+  padding: 0;
 }
 
-.hero-homepage p:first-child {
+.hero-homepage > div:first-child picture {
+  display: block;
+  width: 100%;
+}
+
+.hero-homepage > div:first-child img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* On small screens the composited banner is cropped taller so there is room
+   for the overlaid text; keep the photo to the right so the gradient area
+   stays behind the text. */
+@media (width < 900px) {
+  .hero-homepage > div:first-child img {
+    height: 520px;
+    object-position: 82% center;
+  }
+
+  /* Scrim gradient improves legibility of the overlaid text on the cropped
+     mobile image (left blue -> transparent toward the photo on the right). */
+  .hero-homepage > div:first-child::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgb(16 16 235 / 92%) 0%,
+      rgb(16 16 235 / 70%) 45%,
+      rgb(16 16 235 / 0%) 100%
+    );
+  }
+
+  .hero-homepage > div:first-child {
+    position: relative;
+  }
+}
+
+/* --- Text overlay container (full-bleed, not container-constrained) --- */
+.hero-homepage > div:last-child {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.hero-homepage > div:last-child > div {
+  max-width: 320px;
+  pointer-events: auto;
+}
+
+/* Eyebrow (first paragraph) */
+.hero-homepage > div:last-child p:first-child {
+  margin: 0 0 12px;
+  color: #fff;
   font-size: 14px;
   font-weight: 500;
+  letter-spacing: 1.5px;
+  line-height: 22.4px;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 0 0 8px;
-  opacity: 0.9;
 }
 
 .hero-homepage h1 {
-  font-size: 36px;
+  margin: 0;
+  color: #fff;
+  font-size: 32px;
   font-weight: 700;
-  line-height: 1.15;
-  margin: 0 0 16px;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+/* Description paragraph */
+.hero-homepage > div:last-child p {
+  margin: 16px 0 0;
   color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
-.hero-homepage .button-container {
-  margin-top: 24px;
+/* CTA button (last paragraph's link, whether or not it is auto-decorated) */
+.hero-homepage > div:last-child p:last-child {
+  margin-top: 32px;
 }
 
+.hero-homepage > div:last-child p:last-child a:any-link,
 .hero-homepage a.button:any-link {
-  background-color: #1010eb;
-  border-color: #1010eb;
-  color: #fff;
-  padding: 16px 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border: none;
   border-radius: 9999px;
+  padding: 16px 40px;
+  background-color: rgb(40 94 255);
+  color: #fff;
+  font-size: 16px;
   font-weight: 500;
+  line-height: 24px;
+  text-decoration: none;
 }
 
+.hero-homepage > div:last-child p:last-child a:any-link:hover,
 .hero-homepage a.button:any-link:hover {
-  background-color: #170f5f;
-  border-color: #170f5f;
+  border: none;
+  background-color: var(--link-hover-color, #1010eb);
+  color: #fff;
+  text-decoration: none;
 }
 
-@media (width >= 900px) {
-  .hero-homepage {
-    min-height: 560px;
+@media (width >= 600px) {
+  .hero-homepage > div:last-child {
+    padding: 0 32px;
+  }
+
+  .hero-homepage > div:last-child > div {
+    max-width: 440px;
   }
 
   .hero-homepage h1 {
-    font-size: 44px;
+    font-size: 40px;
   }
 
-  .hero-homepage > div {
-    padding: 80px 32px;
+  .hero-homepage > div:last-child p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+}
+
+@media (width >= 900px) {
+  .hero-homepage > div:last-child {
+    padding: 0 64px;
+  }
+
+  .hero-homepage > div:last-child > div {
+    max-width: 400px;
+  }
+
+  .hero-homepage h1 {
+    font-size: 48px;
+  }
+
+  .hero-homepage > div:last-child p {
+    font-size: 20px;
+    line-height: 32px;
+  }
+}
+
+@media (width >= 1200px) {
+  .hero-homepage > div:last-child {
+    padding: 0 128px;
+  }
+
+  .hero-homepage > div:last-child > div {
+    max-width: 400px;
+  }
+
+  .hero-homepage h1 {
+    font-size: 56px;
+    line-height: 67.2px;
   }
 }
